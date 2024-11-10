@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'css/login.css' %}"> -->
+    <title>Login</title>
+    <style>
+
+    
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-color: aqua;
+    background-size: cover;
+    padding: 10px;
+    background-image: url('https://img.freepik.com/free-photo/futuristic-moon-background_23-2150930692.jpg?semt=ais_hybrid');
+}
+
+h2 {
+    text-align: center;
+    font-size: x-large;
+    color: #b8c4c7;
+}
+
+form {
+    height:70%;
+    background-color: #0f0c00be;
+    padding: 20px;
+     width: 30%;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 30%;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+.btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 30%;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+
+        input[type="text"], input[type="password"] {
+            width: 50%; 
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            margin-top: 30px;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+  
+    <form method="POST">
+        <h2>Login</h2>
+        {% csrf_token %}
+       
+        <label for="id_usernsme"></label>
+        <input type="text" name="username" placeholder="Username" id="id_username" class="form-control" required>
+        <br>
+        <br>
+        <label for="id_password"></label>
+        <input type="password" name="password" placeholder="Password" id="id_password" class="form-control" required>
+        <br>
+        <br>
+        <br>
+       <center> <button type="submit" class="btn">Login</button></center>
+       <br>
+       <br>
+       <a style="color:aqua" href="{% url 'password_reset' %}">Password Reset</a>
+
+    </form>
+</body>
+</html>

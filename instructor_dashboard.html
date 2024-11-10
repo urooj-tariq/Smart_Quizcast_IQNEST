@@ -1,0 +1,262 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>WELCOME TO DASHBOARD</title>
+
+    <style>
+ 
+        .PARA1{
+            height: 10vh;
+            background-color: rgb(86, 146, 196);
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .PARA2{
+            background-color: rgb(68, 66, 66);
+           margin-top: 4px;
+            width: 20%;
+            height: 80vh;
+           
+
+        }
+        .para2_size{
+
+            margin-top: 6px;
+           
+            padding-left: 10px;
+        }
+        .PARA3{
+            background-color: #737075;
+            position: absolute;
+            top: 130px;
+            left: 300px;
+            width: 20%;
+            height:40vh;
+        }
+        .PARA4{
+            background-color: #737075;
+            position: absolute;
+            top: 130px;
+          left:600px;
+            width: 20%;
+            height:40vh;
+            text-align: justify;
+        }
+        .PARA5{
+            background-color: #737075;
+            position: absolute;
+            top: 130px;
+           left: 900px;
+            width: 20%;
+            height:40vh;
+        }
+        .header-btn:hover {
+
+background-color: #39255f;
+color: white;
+}
+  button{
+    background-color: #3215b6;
+    top:400px;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+
+  }
+  .header-btn {
+    background-color: rgb(247, 239, 245);
+    color: #2d2231;
+    border: 2px solid #501d80;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+.PARA3:hover {
+
+background-color: #b4c9d4;
+color: white;
+}
+.PARA4:hover {
+
+background-color: #b4c9d4;
+color: white;
+}
+.PARA5:hover {
+
+background-color: #b4c9d4;
+color: white;
+}
+
+
+  .btn {
+        
+            background-color: #502345;
+            color: white;
+            font-size: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 30%;
+            transition: background-color 0.3s;
+        }
+.imageplace{
+    align-content: center;
+    width: 200px;
+  height: 250px;
+}
+
+.imageplace img{
+    max-width: 100%;
+max-height: 100%;
+object-fit: contain;
+
+}
+
+
+.top_side{
+    padding: 5px;
+    padding-left: 30px;
+       font-style: bold;
+       color: #502345;
+       justify-content: space-between;
+       width: 100%;
+       display: flex;
+
+}
+.para6{
+            background-color: #9eb5c2;
+            position: absolute;
+            top: 400px;
+            left: 300px;
+            width: 63%;
+            height:30vh;
+            color: rgb(94, 22, 112);
+            padding-left: 20px;
+            
+
+}
+.side1{
+    float: left;
+    padding-right: 10%;
+   color: #502345;
+}
+    
+
+</style>
+
+    
+</head>
+
+<body>
+    <div class="PARA1">
+        <div class="top_side">
+        <p>INSTRUCTOR DASHBOARD</p>
+        <div class="side1">
+            {% if user.is_authenticated %}
+            Welcome, {{ user.username }}!
+        {% else %}
+            Welcome, Guest!
+        {% endif %}
+        </div>
+        </div>
+        
+  
+        </div>
+        <div class="PARA2">
+            <div class="para2_size">
+                <br>
+                <br>
+                
+                <button type="submit" class="header-btn" id="home-btn" name="action" value="Home">My Dashboard</button>
+            <br>
+            <br>
+            <br>
+            
+            <button type="submit" class="header-btn" id="home-btn" name="action" value="Home">Users</button>
+            <br>
+            <br>
+            
+            <br>
+            <button type="submit" class="header-btn" id="home-btn" name="action" value="Home">Profile</button>
+            <br>
+            <br>
+            <br>
+           
+            <button type="submit" class="header-btn" id="home-btn" name="action" value="Home">Rating</button>
+            <br>
+            <br>
+            <br>
+          
+            <div class="side">
+                <form method="POST">
+                    {% csrf_token %}
+            <button type="submit" class="header-btn" id="home-btn" name="action" value="Logout">Logout</button>
+                </form>
+            <br>
+            <br>
+        </div>
+        </div>
+        
+       <!-- instructor_dashboard.html -->
+       {% if mentor_profile %}
+       <h2>Your Mentor Profile</h2>
+       <p><strong>Name:</strong> {{ mentor_profile.user.first_name }} {{ mentor_profile.user.last_name }}</p>
+       <p><strong>Expertise:</strong> {{ mentor_profile.expertise }}</p>
+       <p><strong>Experience:</strong> {{ mentor_profile.experience }}</p>
+       <p><strong>Contact Info:</strong> {{ mentor_profile.contact_info }}</p>
+   {% else %}
+       <p>No mentor profile found. Please contact the admin.</p>
+   {% endif %}
+        <div class="PARA3">
+            <center>
+                <div class="imageplace">
+                  
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtL-crDUjxxYKDKjGqNbFUSt1qRphWWV5yUmgSyPbD99Sx7OuE6DBaDubBA2YU67Zq6XM&usqp=CAU" alt="" srcset=""> 
+                    <center> <button type="submit" class="btn">Upload lectures</button></center>
+                </div>
+            </center>
+          
+            </div>
+
+            <div class="PARA4">
+                     <center>
+                <div class="imageplace">
+                    <img src="https://www.tableau.com/sites/default/files/2021-06/DataGlossary_Icons_Pie%20Chart.jpg" alt="" srcset=""> 
+                    <center> <button type="submit" class="btn">Student Record</button></center>
+                </div>
+              
+            </center>
+                
+            </div>
+
+
+            <div class="PARA5">
+                <center>
+                <div class="imageplace">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQBqdkftK4pl_kpY8bHIVfZ89Q3m-JKnYC8wak0qjLeJNCGme9h3RQEdVhCj7iw-bJ788&usqp=CAU" alt="" srcset="">
+                    <center> <button type="submit" class="btn">lectures</button></center>
+                </div>
+            </center>
+                
+            </div>
+            <div class="para6">
+                <p>Student list</p>
+
+            </div>
+
+   
+        
+    
+</body>
+</html>

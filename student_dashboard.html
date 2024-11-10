@@ -1,0 +1,332 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME TO DASHBOARD</title>
+ <!---   <link rel="stylesheet" href="{% static 'css/combined_selection.css' %}">-->
+    <style>
+        
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0e0909;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    margin: 30px auto;
+    position: absolute;
+    top: 150px;
+    left: 400px;
+    margin: 30px auto;
+    padding: 10px;
+    background-color: rgb(159, 158, 180);
+  width: 40%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+h1 {
+    color: #F9E400;
+    margin-bottom: 10px;
+}
+
+.selection-section {
+    margin: 20px;
+}
+
+label {
+    font-size: 18px;
+    color: #1640D6;
+}
+
+select {
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #1640D6;
+    color: #000080;
+}
+
+select:hover {
+    border-color: #000080;
+}
+
+
+
+
+header {
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+
+
+
+
+
+
+/* Header with buttons */
+.header {
+    background-color: #F9E400;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+}
+
+.header-btn {
+    background-color: white;
+    color: #501d80;
+    border: 2px solid #501d80;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-btn:hover {
+
+    background-color: #39255f;
+    color: white;
+}
+
+
+
+
+.side{
+    float: right;
+    padding-left: 30%;
+}
+
+   .PARA2{
+            background-color: pink;
+           margin-top: 4px;
+            width: 20%;
+            height: 80vh;
+
+
+        }
+        .para2_size{
+
+            margin-top: 6px;
+           
+            padding-left: 10px;
+        } 
+        .button{
+            background-color: #f1eef0;
+    top:400px;
+    color: #501d80;
+    border: 2px solid #501d80;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+
+        }
+        .button:hover {
+
+background-color: #39255f;
+color: white;
+}
+.loginbtn{
+background-color: #e6dfec;
+            position: absolute;
+            top: 100px;
+            left: 300px;
+            width: 25%;
+            height:7vh;
+            font-size: 20px;
+            border: none;
+            border: 2px solid #4c4850;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+}
+.loginbtn:hover{
+    background-color: rgb(250, 214, 232);
+  
+}
+.login1btn{
+background-color: #e6dfec;
+            position: absolute;
+            top: 100px;
+            left: 700px;
+            width: 25%;
+            height:7vh;
+            font-size: 20px;
+            border: none;
+            border: 2px solid #4c4850;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+}
+.login1btn:hover{
+    background-color: rgb(250, 214, 232);
+  
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+     <div  class="header-buttons">
+        <button type="submit" class="header-btn" name="action" value="Student dashboard" >STUDENT DASHBOARD</button>
+        <form method="POST">
+            {% csrf_token %}
+
+       <a href="student_dashboard.html"><button type="submit" class="header-btn" name="action" value="Home">Home</button> </a>
+        </form>
+        <form method="POST">
+            {% csrf_token %}
+
+       <a href="student_dashboard.html"><button type="submit" class="header-btn"id="aboutus-btn"  name="action" value="About us">About us</button> </a>
+        </form>
+        <form method="POST">
+            {% csrf_token %}
+
+       <a href="student_dashboard.html"><button type="submit" class="header-btn" id="ask-questions-btn" name="action" value="Ask Questions">Ask Questions</button> </a>
+        </form>
+        <div class="side">
+        <form method="POST">
+            {% csrf_token %}
+
+       <a href="welcome.html"><button type="submit" class="header-btn" id="logout_btn" name="action" value="logout">logout</button> </a>
+        </form>
+    </div>
+
+       <a href="student_dashboard.html"><button type="submit" class="header-btn" id="Contact_us-btn" name="action" value="Contact us">Contact us</button> </a>
+     
+       {% if user.is_authenticated %}
+       welcome, {{ user.username }}!
+
+       {% else %}
+       welcome,Guest!
+       {% endif %}
+    </div>
+</header>
+
+
+    
+    <div class="PARA2">
+        
+        <div class="para2_size">
+            <br>
+            <br>
+            
+            <button type="submit" class="button" id="home-btn" name="action" value="Home">My Dashboard</button>
+        <br>
+        <br>
+        <br>
+        <form method="POST">
+            {% csrf_token %} 
+        <a href="view_profile.html" ><button type="submit" class="button" id="home-btn" name="action" value="Profile">Profile</button></a>
+        </form>
+        <br>
+        <br>
+        
+
+        <form method="POST">
+            {% csrf_token %}
+            <a href="rating.html"><button type="submit" class="button" id="home-btn" name="action" value="feedback">feedback</button></a>
+            <br>
+            <br>
+            <br> 
+        </form>
+        
+
+        <button type="submit" class="button" id="home-btn" name="action" value="Home">Performance</button>
+        
+    </div>
+    </div>
+
+    <center> <button type="submit" class="loginbtn">Check Records</button></center>
+    <center> <button type="submit" class="login1btn">Certificates</button></center>
+
+    <div class="container">
+        <h1>Select Your Courses</h1>
+        
+        
+        <div class="selection-section">
+            <label for="level">Choose Your Class:</label>
+            <select id="level">
+                <option value="none" selected disabled>Select Class Level</option>
+                <option value="9">9th Class</option>
+                <option value="10">10th Class</option>
+            </select>
+        </div>
+        
+        <!-- Course Selection -->
+        <div class="selection-section" id="course-section" style="display:none;">
+            <label for="course">Choose Your Course:</label>
+            <select id="course">
+                <option value="none" selected disabled>Select Course</option>
+                <!-- Courses will be dynamically populated based on class level -->
+            </select>
+        </div>
+
+        <!-- Topic Selection -->
+        <div class="selection-section" id="topic-section" style="display:none;">
+            <label for="topic">Choose Your Topic:</label>
+            <select id="topic">
+                <option value="none" selected disabled>Select Topic</option>
+                <!-- Topics will be dynamically populated based on course selection -->
+            </select>
+        </div>
+
+
+        
+    </div>
+     
+     
+
+
+    <script src="{% static 'js/combined_selection.js' %}"></script>
+
+</body>
+</html>

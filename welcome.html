@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>WELCOME TO Smart quizcast</title>
+   <style>
+       
+       body{
+        margin:0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        color: #e0dfdf;
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.pinimg.com/736x/69/77/19/69771931956d22c653b970927ccb9e1f.jpg') no-repeat center center/cover;;
+       }
+        
+        .container{
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow:  0 10px 20px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1{
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #f7c02c;
+        }
+      
+        
+       p{
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        color: #f0e5d6;
+       }
+
+        
+         .cta-btn{
+            padding: 12px 30px;
+            background-color: #f7c02c;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition:background-color 0.3s ease-in-out ;
+            font-size: 1.2rem;
+         }
+         .cta-btn:hover{
+            background-color: #f7c02c;
+         }
+     footer{
+        margin-top: 20px;
+        color: #e0dfdf;
+     }
+        footer a{
+            color: #f7c02c;
+            text-decoration: underline;
+        }
+
+       footer a:hover{
+        color: #f7c02c;
+       }
+
+        
+   </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Welcome to Smart Quizcast</h1>
+        <p>Welcome to Smart Quizcast! Start your learning journey today and achieve your goals with ease</p>
+        <a href="/register" class="cta-btn">Get Started</a>
+        <footer>
+            <p>Already have an account? <a href="/login">Login here</a> </p>
+        </footer>
+    </div>
+</body>
+</html>

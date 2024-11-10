@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/combined_selection.css' %}">
+    <title>Rate Our Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d8a3a3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            height:100vh ;
+        }
+
+     
+.header {
+    background-color: #3f1a6e;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+}
+
+.header-btn {
+    background-color: white;
+    color: #501d80;
+    border: 2px solid #501d80;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+        .rating-container {
+            background: white;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            align-items: center;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            font-size: 40px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .star.selected, .star:hover, .star:hover ~ .star {
+            color: #f39c12;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        #ratingResult {
+            margin-top: 10px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="rating-container">
+        <h2>Rate Our Website</h2>
+        <div class="stars">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        
+            <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="rating" id="ratingValue">
+            <button type="submit" class="submit-btn">Submit Rating</button>
+        </form>
+    </div>
+    <label for="comment">Your Feedback:</label>
+    <textarea id="comment" name="comment" rows="4" placeholder="Write your feedback here..." required></textarea>
+    <script src="{% static 'js/rating.js' %}"></script> 
+</body>
+</html>

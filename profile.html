@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        /* Container styling */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Form and Label styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+
+        input[readonly] {
+            background-color: #e9ecef;
+            color: #495057;
+        }
+
+        /* Button styling */
+        .btn {
+            font-size: 16px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+            margin-top: 10px;
+        }
+
+        .edit {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .save {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .cancel {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Profile Information</h2>
+
+        <form method="POST" action="{% url 'profile' %}">
+            {% csrf_token %}
+            <div id="profile-fields">
+                <!-- Profile Form Fields -->
+                <div class="form-group">
+                    <label for="id_first_name">First Name</label>
+                    <input type="text" id="id_first_name" name="first_name" value="{{ user.first_name }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="id_last_name">Last Name</label>
+                    <input type="text" id="id_last_name" name="last_name" value="{{ user.last_name }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="id_email">Email</label>
+                    <input type="email" id="id_email" name="email" value="{{ user.email }}" readonly>
+                </div>
+            </div>
+
+            <!-- Edit, Save, and Cancel buttons -->
+            <button id="edit-btn" class="btn edit" type="button" onclick="enableEdit()">Edit</button>
+            <button id="save-btn" class="btn save" type="submit" style="display: none;">Save Changes</button>
+            <button id="cancel-btn" class="btn cancel" type="button" onclick="disableEdit()" style="display: none;">Cancel</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to toggle edit mode
+        function enableEdit() {
+            document.getElementById('edit-btn').style.display = 'none';
+            document.getElementById('save-btn').style.display = 'inline-block';
+            document.getElementById('cancel-btn').style.display = 'inline-block';
+
+            let fields = document.querySelectorAll('#profile-fields input');
+            fields.forEach(field => field.removeAttribute('readonly'));
+        }
+
+        function disableEdit() {
+            document.getElementById('edit-btn').style.display = 'inline-block';
+            document.getElementById('save-btn').style.display = 'none';
+            document.getElementById('cancel-btn').style.display = 'none';
+
+            let fields = document.querySelectorAll('#profile-fields input');
+            fields.forEach(field => field.setAttribute('readonly', 'true'));
+
+            location.reload(); // Reload to discard any changes
+        }
+
+        // Set fields to read-only on page load
+        window.onload = function() {
+            let fields = document.querySelectorAll('#profile-fields input');
+            fields.forEach(field => field.setAttribute('readonly', 'true'));
+        }
+    </script>
+</body>
+</html>
